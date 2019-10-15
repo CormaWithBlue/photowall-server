@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.lang.System;
 import java.io.File;
 import java.util.ArrayList;
+
+import com.alibaba.fastjson.JSONObject;
 /**
  * controller
  *
@@ -41,9 +42,11 @@ public class GetFileList {
 
     @RequestMapping("/GetFileList")
     public String method() {
-        getFiles(photoDirectory);
         System.out.println("getfilelist received");
-        return "haha";
+        getFiles(photoDirectory);
+        JSONObject object = new JSONObject();
+        object.put("FileList",filelist);
+        return object.toJSONString();
     }
 
     public static void main(String[] args) {
