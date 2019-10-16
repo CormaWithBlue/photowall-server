@@ -43,6 +43,7 @@ public class GetFileList {
     @RequestMapping("/GetFileList")
     public String method() {
         System.out.println("getfilelist received");
+        filelist.clear();
         getFiles(photoDirectory);
         JSONObject object = new JSONObject();
         object.put("FileList",filelist);
